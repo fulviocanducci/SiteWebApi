@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Site.Dal;
+using System.Data.SqlClient;
 
 namespace Site.WebApi
 {
@@ -37,6 +39,14 @@ namespace Site.WebApi
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+                       
+
+            Func<IServiceProvider, SqlConnection> Connect =
+                a => new SqlConnection(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddScoped(Connect);
+            services.AddScoped(typeof(IConnection), typeof(Connection));
+            services.AddScoped(typeof(IDalBrand), typeof(DalBrand));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
