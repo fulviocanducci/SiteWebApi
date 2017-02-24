@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Site.Dal;
-namespace Site.WebApi.Controllers
+namespace Site.Web.Api.Controllers
 {
-    [Route("api/[controller]")]    
-    public class MarcaController : Controller
+    [Route("api/[controller]")]
+    public class BrandController : Controller
     {
         private readonly IDalBrand Dal;
-        public MarcaController(IDalBrand dal)
+        public BrandController(IDalBrand dal)
         {
             Dal = dal;
         }

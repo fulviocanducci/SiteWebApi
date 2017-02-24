@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-
 namespace Site.Dal
 {
     public class Connection : IConnection
